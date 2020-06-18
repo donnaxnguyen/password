@@ -1,1 +1,1 @@
-# password-homework
+# password-generator
