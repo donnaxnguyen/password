@@ -25,7 +25,7 @@ var choices;
 
 // this converts the letters to uppercase
 var toUpper = function(x) {
-    returrn .toUpperCase();
+    returrn x.toUpperCase();
 };
 
 // this creates the "alpha" variable an uppercase conversion
@@ -37,7 +37,7 @@ var get = document.querySelector("generate");
 // when user clicks, this generates password 
 get.addEventListener("click", function() {
     ps = generatePassword();
-    document.getElementById("password").placeholder=ps;
+    document.getElementById("password").placeholder = ps;
 
 });
 
@@ -45,14 +45,14 @@ get.addEventListener("click", function() {
 function generatePassword() {
     // this is the prompt that will pop up and this also asks for the user to input their preferred number of characters
         // the parseInt is to have whole integers
-  enter = parseIntprompt("How many characters would you like your password to be? Choose between 8 - 100")
+  enter = parseIntprompt("How many characters would you like your password to have? Choose between 8 - 128")
 
   // this is the if statement for validation --> if user doesn't put in anything, this alert will pop up :-)
   if (!enter) {
     alert ("This needs a value");
   }
   else if (enter < 8 || enter > 128) {
-    enter = parseInt(prompt("You must choose between 8 and 100 >:O"));
+    enter = parseInt(prompt("You must choose between 8 and 128 >:O"));
     // this validates the user input and also has a reply
 
   } else {
@@ -153,7 +153,6 @@ else if (confirmLowercase) {
 }
 
 // this is the space variable from earlier for uppercase conversion
-
 else if (confirmUppercase) {
     choices = space.concat(alpha2);
 };
