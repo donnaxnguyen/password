@@ -62,13 +62,14 @@ textarea {
 }
 
 /* generate button style */
-#generate {
+#generateButton {
   background-color: #f44336;
   font-size: 20px;
   padding: 14px 40px;
   border-radius: 15px;
   margin-left: 18%;
   margin-bottom: 10px;
+  float: left
 }
 
 /* copy button style */
@@ -79,6 +80,7 @@ textarea {
   border-radius: 15px;
   margin-left: 10px;
   margin-bottom: 10px;
+  float: right
 }
 
 /* media screen style */

@@ -14,32 +14,31 @@
 
 <body>
 <!-- this is where the body starts -->
-
-<!-- this is a wrapper container that has all the contents -->
-<div id = "wrapper">
-<header> 
-<h1> Password Generator</h1>
-</header>
-
-<!-- this is the areas contents -->
-<div id = "content">
-<h2>Generate a Password</h2>
-<hr>
-
-<!-- this is a readonly area for the output -->
-<textarea readonly id = "password" placeholder = "Your Password Will Be Generated Here"
-aria-label = "Generated Password"> </textarea>
-<hr>
-
-<!-- this is the div id for the buttons (this also gives what texts will be shown) -->
-<div id = "btn">
-    <button id = "generate">Generate Password</button>
-
-<button id = "copy"> Copy to Clipboard</button>
-
+<body>
+    <div class="container-fluid main-content">
+        <div class="row justify-content-center">
+            <div class="text-center col-md-12 bg-dark text-light">
+            <!-- this is the title -->
+                <h1 class="font-weight-bold">Password Generator</h1>
+            </div>
+            <div class="col-md-8 bg-light my-4 border rounded-sm mx-2">
+                <!-- this is the header -->
+                <h3 class="py-2 border-bottom">Random Password</h3>
+                <div class="row text-center pt-2">
+                    <div class="col-md-12">
+                        <textarea class="form-control text-center" id="password-form" placeholder="Your Secure Password"
+                            rows="3" readonly></textarea>
+                    </div>
+                </div>
+    <!-- these are the buttons -->
+    <div id = "btn">
+        <button id = "generateButton">Generate Password</button>
+        </div>
+    <button id = "copy"> Copy to Clipboard</button>
+    
+            </div>
         </div>
     </div>
-</div>
 
 <!-- this is the document for javascript -->
 <script src = "script.js"></script>
