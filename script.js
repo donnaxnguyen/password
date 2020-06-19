@@ -24,9 +24,8 @@ space = [];
 var choices; 
 
 // this converts the letters to uppercase
-var toUpper = function(x) {
-    returrn x.toUpperCase();
-};
+var string = str.toUpperCase(); 
+document.write(string); 
 
 // this creates the "alpha" variable an uppercase conversion
 alpha2 = alpha.map(toUpper);
@@ -191,4 +190,3 @@ document.getElementById("password").select();
 document.execCommand("Copy");
 alert("Password copied to clipboard!");
 }
-
