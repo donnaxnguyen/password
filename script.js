@@ -24,8 +24,9 @@ space = [];
 var choices; 
 
 // this converts the letters to uppercase
-var string = str.toUpperCase(); 
-document.write(string); 
+var toUpper = function (x) {
+  return x.toUpperCase();
+};
 
 // this creates the "alpha" variable an uppercase conversion
 alpha2 = alpha.map(toUpper);
@@ -34,17 +35,17 @@ alpha2 = alpha.map(toUpper);
 var get = document.querySelector("generate");
 
 // when user clicks, this generates password 
-get.addEventListener("click", function() {
-    ps = generatePassword();
-    document.getElementById("password").placeholder = ps;
-
+get.addEventListener("click", function () {
+  ps = generatePassword();
+  document.getElementById("password").placeholder = ps;
 });
+
 
 // this function is to generate the password
 function generatePassword() {
     // this is the prompt that will pop up and this also asks for the user to input their preferred number of characters
         // the parseInt is to have whole integers
-  enter = parseIntprompt("How many characters would you like your password to have? Choose between 8 - 128")
+  enter = parseIntprompt("How many characters would you like your password to have? Choose between 8 - 128");
 
   // this is the if statement for validation --> if user doesn't put in anything, this alert will pop up :-)
   if (!enter) {
@@ -59,14 +60,14 @@ function generatePassword() {
       confirmNumber = confirm("Will this have numbers?");
       confirmCharacter = confirm("Will this have special characters?");
       confirmUppercase = confirm("Will this have uppercase letters?");
-      confirmLowercase = confirm("Will this have lowercase letters?")
+      confirmLowercase = confirm("Will this have lowercase letters?");
 };
 
   // this is an "if" and this will pop up for four negative options 
     // if user does not "ok" character, number, uppercase, or lowercase...
   if (!confirmCharacter && confirmNumber && !confirmUppercase && !confirmLowercase) {
     // ... then an alert will pop up!
-      choices = alert("You have to choose a criteria for your passsword!")
+      choices = alert("You have to choose a criteria for your passsword!");
 
   }
 
