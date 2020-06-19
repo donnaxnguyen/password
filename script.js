@@ -6,7 +6,7 @@ var confirmUppercase;
 var confirmLowercase;
 
 // these are the special characters
-character = ["!", "@", "#", "$", "%", "&", "*", "+", "-", "=", "?","~", "^", ">", "<"];
+character = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
 
 
 // these are the numeric characters
