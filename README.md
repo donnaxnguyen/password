@@ -1,59 +1,44 @@
 # password-generator
-# Project Title
+# Password Generator Activity
 
-One Paragraph of project description goes here
+For this project, a password has to be generated
 
-## Getting Started
+## Summary
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+HTML, CSS, and Javascript was used to create a random password generator
 
-### Prerequisites
+### What Will Be Shown
 
-What things you need to install the software and how to install them
+This project will ask the user a series of password criterias. Once the user gives the criteria, the generator will process a password
 
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+### What It Includes
+* Button to click that generates password
+* A series of password criteria that includes: 8 - 128 characters, lowercase, uppercase, numeric, and/or special characters
+* Once the user chooses their preferred prompts, the generator will match the users criteria
+* Once the password is generated, it will be displayed on the users screen
+* The user may copy the password to their clipboard
 
 
 ## Built With
 
-* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
-* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-* [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* HTML - view "index.html"
+** This contains user inputs, the divs, and buttons
+
+* CSS - view "style.css"
+** This contains all the styling features for the HTML
+
+* Javascript - view "script.js"
+** This contains all the variables, values, arrays, etc. Also includes all of the if's and else if's statements
 
 ## Deployed Link
 
-* [See Live Site](#)
+* [https://donnaxnguyen.github.io/password-homework/](#)
 
 
 ## Authors
 
-* **YOUR NAME** 
+* **Donna Nguyen** 
 
-- [Link to Portfolio Site](#)
-- [Link to Github](https://github.com/)
-- [Link to LinkedIn](https://www.linkedin.com/)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
