@@ -1,151 +1,91 @@
-// these are the variables 
-var passwordEl = document.querySelector("#password");
-var btngenerateEl = document.querySelector("#generate");
-var btncopyEl = document.querySelector("#copy");
+var specialArr = ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'];
+var numericArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var lowerArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var upperArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+var selectedArr = [];
+var requiredArr = [];
+var mergedArr = [];
+var passLength = 0;
+var userPassword = '';
 
-// this creates a function for clicking on the button 
+var genPasswordButton = document.querySelector('#generateButton');
+var copyPasswordButton = document.querySelector('#copyButton');
 
-btngenerateEl.addEventListener("click", function () {
+genPasswordButton.addEventListener('click', function() {
+    passReset();
+    passLength = prompt('Choose a password length between 8 and 128 characters.');
+    if (parseInt(passLength) < 8 || parseInt(passLength) > 128) {
+        alert('Invalid length. Please choose a length between 8 and 128 characters.');
+    } else if (passLength === null) {
+        alert('A password will not be generated.');
+    } else if (isNaN(passLength) === true || passLength === '') {
+        alert('Please use numerical numbers and try again.');
+    } else {
+        selectedCharacters();
+    }
+    document.getElementById('password-form').textContent = userPassword;
+});
 
-// this asks how many characters
-var charLength = prompt("How many characters would you like your password to be? Pick a number between 8 and 128");
-
-// program runs if its from 8 - 128
-  if ((charLength >= 8) && (charLength <= 128)) {
-
-
-// these are the criterias and prompts the user can choose from.
-    let genSymbols = confirm("Do you want your password to have special characters?");
-    let genNumbers = confirm("Do you want numbers in the password?");
-    let genLowerCase = confirm("Would you like to use lowercase letters?");
-    let genUpperCase = confirm("Would you also like to use uppercase letter?");
-
-  
-// these are the variables for the generator to use 
-  let symbols = "!'#$%&()*+-./;:<>=?@[]{}~^";
-  let numbers = "0123456789";
-  let lowerCase = "abcdefghijklmnopqrstuvwxyz";
-  let upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-  // this is a blank string for the generator
-  let newPassword = "";
-
-
-// this creates variables that will add all the new characters together
-    var allCharacters = symbols + numbers + lowerCase + upperCase;
-    var a = symbols + numbers + lowerCase;
-    var b = symbols + numbers + upperCase;
-    var c = symbols + lowerCase + upperCase;
-    var d = numbers + lowerCase + upperCase;
-    var e = symbols + numbers;
-    var f = symbols + lowerCase;
-    var g = symbols + upperCase;
-    var h = numbers + lowerCase;
-    var j = numbers + upperCase;
-    var k = lowerCase + upperCase;
-
-  // these are the if statements that will match and loop the password combos
-   if ((genSymbols === true) && (genNumbers === true) && (genLowerCase === true) && (genUpperCase === true)) {
-    for (i = 0; i < charLength; i++) {
-        let character = Math.floor(Math.random() * allCharacters.length);
-        newPassword += allCharacters.charAt(character, character + 1);
-      }
+function selectedCharacters() {
+    var specialYes = confirm('Click OK to include special characters in your password.');
+    if (specialYes === true) {
+        selectedOption(specialArr);
     }
-    else if ((genSymbols === true) && (genNumbers === true) && (genLowerCase === true) && (genUpperCase === false)) {
-        for (i = 0; i < charLength; i++) {
-            let character = Math.floor(Math.random() * a.length);
-            newPassword += a.charAt(character, character + 1);
-        }
+    var numericYes = confirm('Click OK to include numerical characters in your password.');
+    if (numericYes === true) {
+        selectedOption(numericArr);
     }
-    else if ((genSymbols === true) && (genNumbers === true) && (genLowerCase === false) && (genUpperCase === true)) {
-        for (i = 0; i < charLength; i++) {
-            let character = Math.floor(Math.random() * b.length);
-            newPassword += b.charAt(character, character + 1);
-        }
+    var lowerYes = confirm('Click OK to include lowercase characters in your password.');
+    if (lowerYes === true) {
+        selectedOption(lowerArr);
     }
-    else if ((genSymbols === true) && (genNumbers === false) && (genLowerCase === true) && (genUpperCase === true)) {
-        for (i = 0; i < charLength; i++) {
-            let character = Math.floor(Math.random() * c.length);
-            newPassword += c.charAt(character, character + 1);
-        }
+    var upperYes = confirm('Click OK to include uppercase characters in your password.');
+    if (upperYes === true) {
+        selectedOption(upperArr);
     }
-    else if ((genSymbols === false) && (genNumbers === true) && (genLowerCase === true) && (genUpperCase === true)) {
-        for (i = 0; i < charLength; i++) {
-            let character = Math.floor(Math.random() * d.length);
-            newPassword += d.charAt(character, character + 1);
-        }
+    if (upperYes === false && lowerYes === false && numericYes === false && specialYes === false) {
+        alert('You must select at least one character type.');
     }
-    else if ((genSymbols === true) && (genNumbers === true) && (genLowerCase === false) && (genUpperCase === false)) {
-        for (i = 0; i < charLength; i++) {
-            let character = Math.floor(Math.random() * e.length);
-            newPassword += e.charAt(character, character + 1);
-        }
-    }
-    else if ((genSymbols === true) && (genNumbers === false) && (genLowerCase === true) && (genUpperCase === false)) {
-        for (i = 0; i < charLength; i++) {
-            let character = Math.floor(Math.random() * f.length);
-            newPassword += f.charAt(character, character + 1);
-        }
-    }
-    else if ((genSymbols === true) && (genNumbers === false) && (genLowerCase === false) && (genUpperCase === true)) {
-        for (i = 0; i < charLength; i++) {
-            let character = Math.floor(Math.random() * g.length);
-            newPassword += g.charAt(character, character + 1);
-        }
-    }
-    else if ((genSymbols === false) && (genNumbers === true) && (genLowerCase === true) && (genUpperCase === false)) {
-        for (i = 0; i < charLength; i++) {
-            let character = Math.floor(Math.random() * h.length);
-            newPassword += h.charAt(character, character + 1);
-        }
-    }
-    else if ((genSymbols === false) && (genNumbers === true) && (genLowerCase === false) && (genUpperCase === true)) {
-        for (i = 0; i < charLength; i++) {
-            let character = Math.floor(Math.random() * j.length);
-            newPassword += j.charAt(character, character + 1);
-        }
-    }
-    else if ((genSymbols === false) && (genNumbers === false) && (genLowerCase === true) && (genUpperCase === true)) {
-        for (i = 0; i < charLength; i++) {
-            let character = Math.floor(Math.random() * k.length);
-            newPassword += k.charAt(character, character + 1);
-        }
-    }
-    else if ((genSymbols === true) && (genNumbers === false) && (genLowerCase === false) && (genUpperCase === false)) {
-        for (i = 0; i < charLength; i++) {
-            let character = Math.floor(Math.random() * symbols.length);
-            newPassword += symbols.charAt(character, character + 1);
-        }
-    }
-    else if ((genSymbols === false) && (genNumbers === true) && (genLowerCase === false) && (genUpperCase === false)) {
-        for (i = 0; i < charLength; i++) {
-            let character = Math.floor(Math.random() * numbers.length);
-            newPassword += numbers.charAt(character, character + 1);
-        }
-    }
-    else if ((genSymbols === false) && (genNumbers === false) && (genLowerCase === true) && (genUpperCase === false)) {
-        for (i = 0; i < charLength; i++) {
-            let character = Math.floor(Math.random() * lowerCase.length);
-            newPassword += lowerCase.charAt(character, character + 1);
-        }
-    }
-    else if ((genSymbols === false) && (genNumbers === false) && (genLowerCase === false) && (genUpperCase === true)) {
-        for (i = 0; i < charLength; i++) {
-            let character = Math.floor(Math.random() * a.length);
-            newPassword += a.charAt(character, character + 1);
-        }
-    }
-   
-    
-// this generates a new password into the text area
-passwordEl.textContent = newPassword;
+    var mergedArr = [].concat.apply([], selectedArr);
+    requiredChars(mergedArr);
 }
 
-})
+function passReset() {
+    mergedArr.length = 0;
+    selectedArr.length = 0;
+    requiredArr.length = 0;
+}
 
-// this is the copy to clipboard button
-btncopyEl.addEventListener("click", function () {
-    passwordEl.select();
-    document.execCommand("copy");
-    alert("Copied your new password");
-})
+function selectedOption(chosen) {
+    var required = Math.floor(Math.random() * chosen.length);
+    requiredArr.push(chosen[required]);
+    selectedArr.push(chosen);
+}
+
+function requiredChars(merged) {
+    var newLength = passLength - requiredArr.length;
+    for (var i = 0; i < newLength; i++) {
+        var randomChar = Math.floor(Math.random() * merged.length);
+        requiredArr.push(merged[randomChar]);
+    }
+    shuffle(requiredArr);
+    userPassword = requiredArr.join('');
+}
+
+copyPasswordButton.addEventListener('click', function() {
+    var emptyEl = document.getElementById('password-form').innerHTML;
+    if (emptyEl === '') {
+        alert('You have not yet generated a password.');
+    } else {
+        document.getElementById('password-form').select();
+        document.execCommand('copy');
+        alert('Your password: ' + userPassword + ' has been copied to the clipboard.');
+    }
+});
+
+function shuffle(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
