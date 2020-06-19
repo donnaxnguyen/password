@@ -163,9 +163,8 @@ var password = [];
 // this randomly picks the variables, math floor and math random randomly chooses the variables and returns it back as a whole integer
 // the choices.length is the amount of variables will be outputed based on the users value choice
 for (var i = 0; i < enter; i++) {
-    var pickChoices = choices[Math.floor(Math.random() * choices.length)];
-    password.push(pickChoices);
-
+  var pickChoices = choices[Math.floor(Math.random() * choices.length)];
+  password.push(pickChoices);
 }
 
 // this joins the password and arrays together
@@ -176,13 +175,13 @@ return ps;
 
 // this puts the password into the box
 function UserInput(ps) {
-document.getElementById("password").textContent = ps;
+  document.getElementById("password").textContent = ps;
 
 }
 
 var copy = document.querySelector("#copy");
 copy.addEventListener("click", function () {
-copyPassword();
+    copyPassword();
 });
 
 // this gives user the option to copy the password
