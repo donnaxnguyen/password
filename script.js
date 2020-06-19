@@ -168,14 +168,28 @@ for (var i = 0; i < enter; i++) {
     password.push(pickChoices);
 
 }
-// this displays the result 
-document.getElementById("password").innerHTML = resultPass;
-   }
 
-// this copies the password to clipboard 
-   function copyPass(){
-
-    document.querySelector("textarea").select();
-    document.execCommand("Copy");
-    alert("Password copied to clipboard!");
+// this joins the password and arrays together
+var ps = password.join("");
+UserInput(ps);
+return ps;
 }
+
+// this puts the password into the box
+function UserInput(ps) {
+document.getElementById("password").textContent = ps;
+
+}
+
+var copy = document.querySelector("#copy");
+copy.addEventListener("click", function () {
+copyPassword();
+});
+
+// this gives user the option to copy the password
+function copyPassword() {
+document.getElementById("password").select();
+document.execCommand("Copy");
+alert("Password copied to clipboard!");
+}
+
